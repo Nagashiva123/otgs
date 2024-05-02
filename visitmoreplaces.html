@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ 
+
+:root {
+
+    /**
+     * colors
+     */
+  
+     --united-nations-blue: green;
+     --bright-navy-blue: hsl(214, 57%, 51%);
+     --spanish-gray: hsl(0, 0%, 60%);
+     --black-coral: hsl(225, 8%, 42%);
+     --oxford-blue: hsl(208, 97%, 12%);
+     --yale-blue: hsl(214, 72%, 33%);
+     --blue-ncs: hsl(197, 100%, 36%);
+     --gunmetal: hsl(206, 34%, 20%);
+     --gainsboro: hsl(0, 0%, 88%);
+     --cultured: hsl(0, 0%, 98%);
+     --white: hsl(0, 0%, 100%);
+     --black: hsl(0, 0%, 0%);
+     --onyx: hsl(0, 0%, 25%);
+     --jet: hsl(0, 0%, 20%);
+  
+    /**
+     * typography
+     */
+  
+    --ff-poppins: "Poppins", sans-serif;
+    --ff-montserrat: "Montserrat", sans-serif;
+  
+    --fs-1: calc(20px + 3.5vw);
+    --fs-2: calc(18px + 1.6vw);
+    --fs-3: calc(16px + 0.45vw);
+    --fs-4: 15px;
+    --fs-5: 14px;
+    --fs-6: 13px;
+    --fs-7: 12px;
+    --fs-8: 11px;
+  
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+    --fw-800: 800;
+  
+    /**
+     * transition
+     */
+  
+    --transition: 0.25s ease-in-out;
+  
+    /**
+     * spacing
+     */
+  
+    --section-padding: 60px;
+  
+    /**
+     * border-radius
+     */
+  
+    --radius-15: 15px;
+    --radius-25: 25px;
+  
+  }
+  
+  
+  
+  
+  
+  /*-----------------------------------*\
+   * #RESET
+  \*-----------------------------------*/
+  
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  li { list-style: none; }
+  
+  a { text-decoration: none; }
+  
+  a,
+  img,
+  span,
+  input,
+  label,
+  button,
+  ion-icon { display: block; }
+  
+  input,
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+  }
+  
+  button { cursor: pointer; }
+  
+  input { width: 100%; }
+  
+  ion-icon { pointer-events: none; }
+  
+  html {
+    font-family: var(--ff-poppins);
+    scroll-behavior: smooth;
+  }
+  
+  body { background: var(--white); }
+  
+  
+  
+  
+  
+  /*-----------------------------------*\
+   * #REUSED STYLE
+  \*-----------------------------------*/
+  
+  .container { padding-inline: 15px; }
+  
+  .btn {
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: var(--fs-5);
+    border-radius: 100px;
+    padding: var(--padding, 8px 18px);
+    border: var(--border-width, 2px) solid transparent;
+    transition: var(--transition);
+  }
+  
+  .btn-primary {
+    background: var(--bright-navy-blue);
+    border-color: var(--bright-navy-blue);
+  }
+  
+  .btn-primary:is(:hover, :focus) {
+    background: var(--yale-blue);
+    border-color: var(--yale-blue);
+  }
+  
+  .btn-secondary { border-color: var(--white); }
+  
+  .btn-secondary:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
+  
+  .h1,
+  .h2,
+  .h3 {
+    font-weight: var(--fw-800);
+    font-family: var(--ff-montserrat);
+    text-transform: uppercase;
+  }
+  
+  .h1 {
+    color: var(--white);
+    font-size: var(--fs-1);
+  }
+  
+  .h2,
+  .h3 { color: var(--gunmetal); }
+  
+  .h2 { font-size: var(--fs-2); }
+  
+  .h3 {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-700);
+  }
+  
+  .section-subtitle {
+    color: var(--bright-navy-blue);
+    font-size: var(--fs-5);
+    text-transform: uppercase;
+    font-family: var(--ff-montserrat);
+    margin-bottom: 8px;
+  }
+  
+  .section-title { margin-bottom: 15px; }
+  
+  .section-text {
+    color: var(--black-coral);
+    margin-bottom: 30px;
+  }
+  
+  .card-text {
+    color: var(--black-coral);
+    font-size: var(--fs-5);
+  }
+  
+  
+  .login{
+    position:absolute;
+    color: var(--white);
+    top: 50px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    
+    
+    
+  }
+  
+
+  
+  /*-----------------------------------*\
+   * #POPULAR
+  \*-----------------------------------*/
+  
+  .popular { padding-block: var(--section-padding); }
+  
+  .popular-list,
+  .popular-list > li:not(:last-child) { margin-bottom: 30px; }
+  
+  .popular-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-25);
+    height: 430px;
+  }
+  
+  .popular-card .card-img { height: 100%; }
+  
+  .popular-card .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .popular-card .card-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--white);
+    border-radius: var(--radius-25);
+    padding: 20px;
+  }
+  
+  
+  .popular-card .card-rating {
+    background: var(--bright-navy-blue);
+    color: var(--white);
+    position: absolute;
+    top: 0;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .popular-card .card-subtitle {
+    color: var(--blue-ncs);
+    font-size: var(--fs-6);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  
+  .popular-card .card-title { margin-bottom: 5px; }
+  
+  .popular-card :is(.card-subtitle, .card-title) > a { color: inherit; }
+  
+  .popular .btn { margin-inline: auto; }
+  
+  
+  
+  
+  
+  
+  @media (min-width: 580px) {
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container {
+      max-width: 580px;
+      margin-inline: auto;
+    }
+  
+    .btn {
+      --fs-5: 16px;
+      --padding: 12px 30px;
+    }
+  
+    section:not(.cta) :is(.section-subtitle, .section-title, .section-text) {
+      text-align: center;
+    }
+  
+    .section-text { margin-bottom: 40px; }
+  
+    .card-text { --fs-5: 15px; }
+  
+  
+  
+  
+  
+    /**
+     * POPULAR
+     */
+  
+    .popular-card .card-content { right: auto; }
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * responsive for larger than 768px screen
+   */
+  
+  @media (min-width: 768px) {
+  
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+  
+      /**
+       * typography
+       */
+  
+      --fs-5: 15px;
+  
+    }
+  
+  
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 800px; }
+  
+    .section-text {
+      max-width: 60ch;
+      margin-inline: auto;
+    }
+  
+  
+  
+   
+  
+  
+    /**
+     * POPULAR
+     */
+  
+    .popular-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+  
+    .popular-list > li:not(:last-child) { margin-bottom: 0; }
+  
+    .popular-card .card-content { right: 20px; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * responsive for larger than 992px screen
+   */
+  
+  @media (min-width: 992px) {
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 1050px; }
+  
+  
+    .popular-list { grid-template-columns: repeat(3, 1fr); }
+  
+  /**
+   * responsive for larger than 1200px screen
+   */
+  
+  @media (min-width: 1200px) {
+  
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+  
+      /**
+       * spacing
+       */
+  
+      --section-padding: 100px;
+  
+    }
+  
+  
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 1180px; }
+  
+  }
+
+
+
+    </style>
+</head>
+<body>
+    
+      <!-- 
+        - #POPULAR
+      -->
+
+      <section class="popular" id="destination">
+        <div class="container">
+
+
+
+          <h2 class="h2 section-title">Beautiful Places to Visit</h2>
+
+          <p class="section-text">
+            You can create a wonderful world around you and make it beautiful.
+            There is so much in this world that you have yet to explore.
+            Beautiful sunrise and sunset views are a divine luxury .
+            Not everyone searches for beauty - some create their own.
+            Do your best to find beauty in the worst of situations.
+          </p>
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/tajmahal.webp" alt="hello" loading="lazy">
+                </figure>
+
+                
+                  <p class="card-subtitle">
+                    <a href="#">India</a>
+                  </p>
+                  <div class="card-content">
+
+                    
+
+                  <h3 class="h3 card-title">
+                    <a href="#">TajMahal</a>
+                  </h3>
+
+                  <p class="card-text">
+                    The Taj Mahal is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/temple.jpg" alt="temple" loading="lazy">
+                </figure>
+
+                <div class="card-content">               
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Varnasi</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Varanasi, also known as Benaras, Kashi, or Banaras, is one of the world's oldest cities. It's located in the northern Indian state of Uttar Pradesh, on the banks of the Ganges River.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/popular-3.jpg" alt="Kyoto temple, japan" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  
+
+                  <p class="card-subtitle">
+                    <a href="#">Japan</a>
+                  </p>
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Kyoto temple</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Beautiful place to visit where u can find peace
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          
+
+        </div>
+      
+       <!-- 
+        - #POPULAR
+      -->
+
+     
+        <div class="container">
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/gallery-1.jpg" alt="hello" loading="lazy">
+                </figure>
+
+                
+                  <p class="card-subtitle">
+                    <a href="#">India</a>
+                  </p>
+                  <div class="card-content">
+
+                    
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Himachal pradesh</a>
+                  </h3>
+
+                  <p class="card-text">
+                    The Himachal is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/gallery-2.jpg" alt="temple" loading="lazy">
+                </figure>
+
+                <div class="card-content">               
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Ooty</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Varanasi, also known as Benaras, Kashi, or Banaras, is one of the world's oldest cities. It's located in the northern Indian state of Uttar Pradesh, on the banks of the Ganges River.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/gallery-3.jpg" alt="Kyoto temple, japan" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  
+
+                  <p class="card-subtitle">
+                    <a href="#">kerla</a>
+                  </p>
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Kerla</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Beautiful place to visit where u can find peace
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          
+
+        </div>
+        <div class="container">
+
+            <ul class="popular-list">
+  
+              <li>
+                <div class="popular-card">
+  
+                  <figure class="card-img">
+                    <img src="./assets/images/popular-2.jpg" alt="hello" loading="lazy">
+                  </figure>
+  
+                  
+                    <p class="card-subtitle">
+                      <a href="#">India</a>
+                    </p>
+                    <div class="card-content">
+  
+                      
+  
+                    <h3 class="h3 card-title">
+                      <a href="#">paris</a>
+                    </h3>
+  
+                    <p class="card-text">
+                      The paris is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra.
+                    </p>
+  
+                  </div>
+  
+                </div>
+              </li>
+  
+              <li>
+                <div class="popular-card">
+  
+                  <figure class="card-img">
+                    <img src="./assets/images/popular-1.jpg" alt="temple" loading="lazy">
+                  </figure>
+  
+                  <div class="card-content">               
+  
+                    <h3 class="h3 card-title">
+                      <a href="#">bangalore</a>
+                    </h3>
+  
+                    <p class="card-text">
+                      Bangalore is the Best place to visit Having good street food and there are Best places to see
+                    </p>
+  
+                  </div>
+  
+                </div>
+              </li>
+  
+              <li>
+                <div class="popular-card">
+  
+                  <figure class="card-img">
+                    <img src="./assets/images/packege-3.jpg" alt="Kyoto temple, japan" loading="lazy">
+                  </figure>
+  
+                  <div class="card-content">
+  
+                    
+  
+                    <p class="card-subtitle">
+                      <a href="#">hyderabad</a>
+                    </p>
+  
+                    <h3 class="h3 card-title">
+                      <a href="#">hyderabad</a>
+                    </h3>
+  
+                    <p class="card-text">
+                      Beautiful place to visit where u can find peace
+                    </p>
+  
+                  </div>
+  
+                </div>
+              </li>
+  
+            </ul>
+  
+            <button class="btn btn-primary" style="background-color: orange;"><a href="index.php">HOME</a></button>
+  
+          </div>
+
+      </section>            
+
+
+</body>
+</html>

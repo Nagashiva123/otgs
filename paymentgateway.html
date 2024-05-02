@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Gateway Integration</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #4CAF50;
+      background-image: url('image.avif');
+      background-size: cover;
+
+    background-position: center;
+    }
+    .paymentOption {
+      display: none; /* Hide all payment options by default */
+    }
+    
+    .paymentOption.show {
+      display: block; /* Show the selected payment option */
+    }
+    
+    h1 {
+      text-align: center;
+      color:orange;
+    }
+    
+    form {
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: yellow;
+      color: white;
+      border: none;
+    }
+    
+  </style>
+</head>
+
+
+ 
+<body>
+  <h1>Payment Gateway Integration</h1>
+  
+  <form id="paymentForm" onsubmit="return handlePayment()">
+    <div>
+      <label for="paymentMethod">Select Payment Method:</label>
+      <select id="paymentMethod" required>
+        <option value="card">Credit/Debit Card</option>
+        <option value="gpay">Google Pay</option>
+        <option value="phonepe">PhonePe</option>
+        <option value="paytm">Paytm</option>
+        <option value="upi">UPI</option>
+      </select>
+    </div>
+    <br>
+    <div id="cardDetails" class="paymentOption">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" placeholder="Enter your card number" required>
+      
+      <label for="expiryDate">Expiry Date:</label>
+      <input type="text" id="expiryDate" placeholder="MM/YY" required>
+      
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" placeholder="Enter CVV" required>
+    </div>
+    
+    <div id="gpayDetails" class="paymentOption">
+      <label for="gpayNumber">GPay Phone Number:</label>
+      <input type="text" id="gpayNumber" placeholder="Enter your GPay phone number" required>
+    </div>
+    
+    <div id="phonepeDetails" class="paymentOption">
+      <label for="phonepeNumber">PhonePe Phone Number:</label>
+      <input type="text" id="phonepeNumber" placeholder="Enter your PhonePe phone number" required>
+    </div>
+    
+    <div id="paytmDetails" class="paymentOption">
+      <label for="paytmNumber">Paytm Phone Number:</label>
+      <input type="text" id="paytmNumber" placeholder="Enter your Paytm phone number" required>
+    </div>
+    
+    <div id="upiDetails" class="paymentOption">
+      <label for="upiId">UPI ID:</label>
+      <input type="text" id="upiId" placeholder="Enter your UPI ID" required>
+    </div>
+
+    <button type="submit">Pay Now</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const paymentMethodSelect = document.getElementById('paymentMethod');
+      const paymentOptions = document.querySelectorAll('.paymentOption');
+    
+      paymentMethodSelect.addEventListener('change', function() {
+        const selectedOption = paymentMethodSelect.value;
+        
+        // Hide all payment options first
+        paymentOptions.forEach(option => option.classList.remove('show'));
+    
+        // Show the selected payment option
+        document.getElementById(`${selectedOption}Details`).classList.add('show');
+      });
+    
+      // Initially hide all payment options except the default one (credit/debit card)
+      document.getElementById('cardDetails').classList.add('show');
+    });
+    
+    function handlePayment() {
+      const paymentMethod = document.getElementById('paymentMethod').value;
+    
+      if (paymentMethod === 'gpay') {
+        const gpayNumber = document.getElementById('gpayNumber').value;
+        // Redirect to Google Pay or handle GPay payment process
+        console.log(`Processing Google Pay with phone number: ${gpayNumber}`);
+        return false; // Prevent form submission for GPay (you can redirect or handle payment here)
+      }
+    
+      // Handle other payment methods here
+    
+      return true; // Allow form submission for other methods
+    }
+    
+    
+  </script>
+</body>
+</html>
